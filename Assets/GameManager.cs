@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
@@ -32,13 +32,27 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
 
+        
+    }
+
+     void Update()
+    {
+        if (isGameOver)
+        {
+            print("yippeee");
+            SceneManager.LoadScene("GameOverScene");
+
+        }
+
     }
 
     public void GameOver()
     {
         //games over
-        isGameOver = true;
+     //  isGameOver = true;
 
-        gameOverPage.SetActive(true); //display gameover UI
+    
+        //gameOverPage.SetActive(true); //display gameover UI
+        
     }
 }

@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     
     private CharacterController charController;
     //basic settings
+    [SerializeField]
     private float speed = 3;
     private float mouseSensitivity = 3.5f;
 
@@ -68,13 +69,12 @@ public class Player : MonoBehaviour
 
                 );
 
-            charController.Move(move * Time.deltaTime * speed);//built in from character controller feature
-
-
+      
 
 
             if (charController.isGrounded)//also built in
             {
+                print("youre grounded");
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     print(currentYVel);
@@ -90,6 +90,7 @@ public class Player : MonoBehaviour
             }
             else
             {
+                print("not grounded");
                 //not on ground
                 currentYVel += gravityValue * Time.deltaTime;
 
@@ -110,6 +111,7 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            GameManager.instance.isGameOver = true;
             //  Health points -= 1
             print("ouch!");
         }

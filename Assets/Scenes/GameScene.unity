@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 386594737}
   m_Layer: 0
   m_Name: EnemyLev1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -615,7 +615,7 @@ Transform:
   m_GameObject: {fileID: 610573657}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.84, y: -0.47, z: 0.48}
+  m_LocalPosition: {x: 0, y: -0.47, z: 0}
   m_LocalScale: {x: 0.17172, y: 0.14480332, z: 1.4130442}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -720,7 +720,7 @@ Transform:
   m_GameObject: {fileID: 892283683}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.49, y: 0.89, z: 0.25}
+  m_LocalPosition: {x: 0.01, y: -0.47, z: -0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -979,7 +979,7 @@ Transform:
   m_GameObject: {fileID: 1292044135}
   serializedVersion: 2
   m_LocalRotation: {x: 0.009347087, y: -0.042455174, z: 0.0014982745, w: 0.99905354}
-  m_LocalPosition: {x: -1.49, y: 1.37, z: 0.24}
+  m_LocalPosition: {x: 0.01, y: 0.01, z: -0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1151,6 +1151,7 @@ GameObject:
   - component: {fileID: 1916818649}
   - component: {fileID: 1916818651}
   - component: {fileID: 1916818650}
+  - component: {fileID: 1916818652}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1167,7 +1168,7 @@ Transform:
   m_GameObject: {fileID: 1916818647}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.61078566, z: -0, w: 0.7917959}
-  m_LocalPosition: {x: 486.14832, y: 183.32495, z: -25.424713}
+  m_LocalPosition: {x: 486.14832, y: 185.13, z: -25.424713}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1240,6 +1241,27 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &1916818652
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916818647}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
