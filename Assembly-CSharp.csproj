@@ -60,8 +60,11 @@
   <ItemGroup>
     <Compile Include="Assets/Player.cs" />
     <Compile Include="Assets/LookAtPlayer.cs" />
+    <Compile Include="Assets/Enemy1.cs" />
     <Compile Include="Assets/EnemySettings.cs" />
     <Compile Include="Assets/MenuManager.cs" />
+    <Compile Include="Assets/Enemy2.cs" />
+    <Compile Include="Assets/Enemy3.cs" />
     <Compile Include="Assets/GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
