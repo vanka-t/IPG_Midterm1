@@ -354,14 +354,16 @@
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.ref.dll"
 -analyzer:"/Applications/Unity/Hub/Editor/2022.3.7f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"/Applications/Unity/Hub/Editor/2022.3.7f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
-"Assets/Enemy1.cs"
-"Assets/Enemy2.cs"
-"Assets/Enemy3.cs"
-"Assets/EnemySettings.cs"
-"Assets/GameManager.cs"
-"Assets/LookAtPlayer.cs"
-"Assets/MenuManager.cs"
 "Assets/Player.cs"
+"Assets/Scripts/Bullet.cs"
+"Assets/Scripts/Enemy1.cs"
+"Assets/Scripts/Enemy2.cs"
+"Assets/Scripts/Enemy3.cs"
+"Assets/Scripts/EnemySettings.cs"
+"Assets/Scripts/GameManager.cs"
+"Assets/Scripts/LookAtPlayer.cs"
+"Assets/Scripts/MenuManager.cs"
+"Assets/Scripts/SpawnerManager.cs"
 -langversion:9.0
 
 /deterministic
