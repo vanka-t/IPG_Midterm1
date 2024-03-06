@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Enemy1 : EnemySettings
 {
-    protected override void Start()
+
+    protected override void TimerContent()
     {
-        base.Start();
-        nav.speed *= 3;
+        //recover health
+        nav.SetDestination(target.position);
     }
-    protected override void Damaged(float damage)
+    //protected override void Start()
+    //{
+    //    base.Start();
+    //    nav.speed *= 3;
+    //}
+    public override void Damaged(float damage)
     {
         //overriden so that damage taken has double the impact on hp
-        hp = Mathf.Max(0, hp - damage * 2); 
+        hp = Mathf.Max(0, hp - damage * 2); //.2f
         if(hp == 0)
         {
             Death();

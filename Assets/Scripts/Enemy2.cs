@@ -6,8 +6,9 @@ public class Enemy2 : EnemySettings
 {
     protected override void TimerContent()
     {
-        base.TimerContent();
+        
         //recover hp over time
         hp = Mathf.Min(hp + Time.deltaTime, hpTotal);
+        nav.SetDestination(target.position); //chase player
     }
 }

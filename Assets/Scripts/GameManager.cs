@@ -6,22 +6,27 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public bool isGameOver = false;
 
-    [SerializeField]
-    AudioClip bgMusic;
-
-    [SerializeField]
-    GameObject gameOverPage;
-
-    public Transform player;
+   
 
     public static GameManager instance;
+    public Transform player;
+
+    [HideInInspector]
+    public bool isGameOver = false;
+
+   // [SerializeField]
+   // AudioClip bgMusic;
+
+    [SerializeField]
+    public GameObject gameOverPage;
+
+    
 
 
 
 
-    private void Awake()
+     void Awake()
     {
         if (instance == null)
         {
@@ -29,7 +34,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
 
         
@@ -37,22 +42,28 @@ public class GameManager : MonoBehaviour
 
      void Update()
     {
-        if (isGameOver)
-        {
-            print("yippeee");
-            SceneManager.LoadScene("GameOverScene");
+        //if (isGameOver)
+        //{
+        //    print("yippeee");
+        //  //  SceneManager.LoadScene("GameOverScene");
 
-        }
+        //}
 
     }
 
     public void GameOver()
     {
         //games over
-     //  isGameOver = true;
+        isGameOver = true;
 
-    
-        //gameOverPage.SetActive(true); //display gameover UI
+
+        gameOverPage.SetActive(true); //display gameover UI
+
         
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

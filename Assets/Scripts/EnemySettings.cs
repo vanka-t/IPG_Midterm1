@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemySettings : MonoBehaviour
 {
-    protected NavMeshAgent nav;
+   
     protected Transform target;
 
     //current health
@@ -17,27 +17,45 @@ public class EnemySettings : MonoBehaviour
     [SerializeField]
     private float timerTotal = 1f;
 
+    protected NavMeshAgent nav;
 
-    // Start is called before the first frame update
-    protected virtual void Start() //protected virtual = enables overriding it in later scripts
+    NavMeshHit closestHit;
+ 
+
+
+
+// Start is called before the first frame update
+protected virtual void Start() //protected virtual = enables overriding it in later scripts
     {
         hp = hpTotal;
+        target = GameManager.instance.player;
         nav = GetComponent<NavMeshAgent>();
 
         //Temp
         //nav.SetDestination(Vector3.zero);
 
-        target = GameManager.instance.player;
 
-        
-        
+
+        if (NavMesh.SamplePosition(gameObject.transform.position, out closestHit, 500f, NavMesh.AllAreas))
+        {
+            gameObject.transform.position = closestHit.position;
+        }
+           
+        else
+        {
+
+            Debug.LogError("Could not find position on NavMesh!");
+        }
+
+
+
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
         TimerTool();
-        nav.SetDestination(target.position); //target.position
+     //   nav.SetDestination(target.position); //target.position
     }
 
 
@@ -59,11 +77,12 @@ public class EnemySettings : MonoBehaviour
 
     protected virtual void TimerContent()
     {
+        //times up
 
     }
 
 
-    protected virtual void Damaged(float damage)
+    public virtual void Damaged(float damage)
     {
         hp = Mathf.Max(0, hp - damage);
         if(hp == 0)
@@ -74,6 +93,7 @@ public class EnemySettings : MonoBehaviour
 
     protected virtual void Death()
     {
+        SpawnerManager.instance.RemoveEnemy(this);
         Destroy(gameObject);
     }
 }
