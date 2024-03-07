@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     float speed = 50;
-    float damage = 20;
+    float damage = 100;
 
 
     //visual fx 

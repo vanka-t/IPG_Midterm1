@@ -8,6 +8,8 @@ TagManager:
   - Weapon
   - Bullet
   - MovingPlatform
+  - Environment
+  - Token
   layers:
   - Default
   - TransparentFX

@@ -378,6 +378,7 @@
 "Assets/Scripts/MovingPlatform.cs"
 "Assets/Scripts/Player.cs"
 "Assets/Scripts/SpawnerManager.cs"
+"Assets/Token.cs"
 -langversion:9.0
 
 /deterministic

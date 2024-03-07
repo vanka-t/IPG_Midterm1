@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector]
     public bool isGameOver = false;
+    public bool nextLevel = false;
 
    // [SerializeField]
    // AudioClip bgMusic;
@@ -65,5 +66,17 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+
+    public void NextLevel()
+    {
+        //games over
+        
+
+
+        SceneManager.LoadScene("Level2");
+        nextLevel = false;
+
     }
 }

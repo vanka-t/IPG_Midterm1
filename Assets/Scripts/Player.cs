@@ -91,13 +91,13 @@ public class Player : MonoBehaviour
 
             //generate bullet
 
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetKeyDown(KeyCode.X))
             {
                 SpawnerManager.instance.SpawnBullet(gunPoint.position, cameraTrans.rotation);
             }
         }
             
-
+        
            
 
             
@@ -106,9 +106,10 @@ public class Player : MonoBehaviour
 
 
         }
-    //if colliding with enemy
+   
     private void OnTriggerEnter(Collider other)
     {
+        //if colliding with enemy
         if (other.CompareTag("Enemy"))
         {
             //GameManager.instance.isGameOver = true;
@@ -120,6 +121,21 @@ public class Player : MonoBehaviour
             GameManager.instance.GameOver();
             print("ouch!");
         }
+
+        //if finding token
+         if (other.CompareTag("Token"))
+        {
+            print("Token collected!");
+            GameManager.instance.nextLevel = true;
+            //  Health points -= 1
+
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            GameManager.instance.NextLevel();
+            
+        }
+
 
     }
 
