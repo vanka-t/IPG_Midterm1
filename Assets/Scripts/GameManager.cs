@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
     {
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        DontDestroyOnLoad(playerObj);
+      //  DontDestroyOnLoad(playerObj);
         level2 = true;
 
 

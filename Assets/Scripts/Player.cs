@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     {
         //setting player coordinates in order to control position when scenes change 
         PlayerPrefs.SetFloat("XPos", -45);// xPos);
-        PlayerPrefs.SetFloat("YPos", 12);//yPos);
+        PlayerPrefs.SetFloat("YPos", 15);//yPos);
         PlayerPrefs.SetFloat("ZPos", -4);//zPos);
 
         charController = GetComponent<CharacterController>();
@@ -45,6 +45,16 @@ public class Player : MonoBehaviour
         //Lock the cursor in the center and hide it
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        //if (GameManager.instance.level2)
+        //{
+        //    float X = PlayerPrefs.GetFloat("XPos");
+        //    float Y = PlayerPrefs.GetFloat("YPos");
+        //    float Z = PlayerPrefs.GetFloat("ZPos");
+        //    transform.position = new Vector3(X, Y, Z);
+        //    print("mu ca kari");
+           
+        //}
 
 
     }
@@ -110,15 +120,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (GameManager.instance.level2)
-        {
-            float X = PlayerPrefs.GetFloat("XPos");
-            float Y = PlayerPrefs.GetFloat("YPos");
-            float Z = PlayerPrefs.GetFloat("ZPos");
-            transform.position = new Vector3(X, Y, Z);
-            print("mu ca kari");
-           // GameManager.instance.level2 = false;
-        }
+       
 
 
         }
