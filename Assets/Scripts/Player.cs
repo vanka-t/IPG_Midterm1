@@ -12,6 +12,10 @@ public class Player : MonoBehaviour
     private float speed = 7;
     private float mouseSensitivity = 3.5f;
 
+    //position coordinates
+    private float xPos = -45;
+    private float yPos = 12;
+    private float zPos = -4;
 
     Transform cameraTrans;
     //camera pitch angle
@@ -30,6 +34,11 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //setting player coordinates in order to control position when scenes change 
+        PlayerPrefs.SetFloat("XPos", -45);// xPos);
+        PlayerPrefs.SetFloat("YPos", 12);//yPos);
+        PlayerPrefs.SetFloat("ZPos", -4);//zPos);
+
         charController = GetComponent<CharacterController>();
         cameraTrans = Camera.main.transform;
 
@@ -46,6 +55,7 @@ public class Player : MonoBehaviour
         //if games not over
         if (!GameManager.instance.isGameOver)
         {
+            
             //print("Game's not over");
 
             //tracks mouse data
@@ -71,10 +81,13 @@ public class Player : MonoBehaviour
 
 
 
-           // if (charController.isGrounded)//also built in
-          //  {
-                print("youre grounded");
-                if (Input.GetKeyDown(KeyCode.Space) && charController.isGrounded)
+            // if (charController.isGrounded)//also built in
+            //  {
+            Debug.Log(transform.position.x + ", " + transform.position.y + "," + transform.position.z);
+            //Debug.Log("XPos: " + transform.position.x);
+           // print("YPos: " + transform.position.y);
+            print("ZPos: " + transform.position.z);
+            if (Input.GetKeyDown(KeyCode.Space) && charController.isGrounded)
                 {
                     print(currentYVel);
                     //jump
@@ -96,13 +109,16 @@ public class Player : MonoBehaviour
                 SpawnerManager.instance.SpawnBullet(gunPoint.position, cameraTrans.rotation);
             }
         }
-            
-        
-           
 
-            
-
-          
+        if (GameManager.instance.level2)
+        {
+            float X = PlayerPrefs.GetFloat("XPos");
+            float Y = PlayerPrefs.GetFloat("YPos");
+            float Z = PlayerPrefs.GetFloat("ZPos");
+            transform.position = new Vector3(X, Y, Z);
+            print("mu ca kari");
+           // GameManager.instance.level2 = false;
+        }
 
 
         }
@@ -126,13 +142,13 @@ public class Player : MonoBehaviour
          if (other.CompareTag("Token"))
         {
             print("Token collected!");
-            GameManager.instance.nextLevel = true;
+           // GameManager.instance.levelComplete = true;
             //  Health points -= 1
 
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            GameManager.instance.NextLevel();
+            GameManager.instance.LevelComplete();
             
         }
 

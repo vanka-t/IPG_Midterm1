@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MovingPlatform : MonoBehaviour
 {
@@ -21,19 +22,19 @@ public class MovingPlatform : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider collider)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collider.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            player = collider.GetComponent<CharacterController>();
+            player = other.GetComponent<CharacterController>();
             oldPos = transform.position;
         }
     }
 
 
-    private void OnTriggerExit(Collider collider)
+    private void OnTriggerExit(Collider other)
     {
-        if (collider.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             //if player gets off, it doesnt move with the platform anymore
             player = null;
