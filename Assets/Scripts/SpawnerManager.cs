@@ -133,11 +133,11 @@ public class SpawnerManager : MonoBehaviour
         //if player is nearby, temporarily disable it
         List<Transform> availableSpawnPoints = new List<Transform>();
         //when calling, it returns the random spaw point chosen
-        foreach (Transform sP in spawnPoints)
+        foreach(Transform sP in spawnPoints)
         {
             Collider[] hitColliders = Physics.OverlapSphere( //creates an invisible sphere collider
                 sP.position,
-                3,
+                30,
                 playerLayerMask
                 );
 

@@ -1,36 +1,24 @@
 ﻿<Properties StartupConfiguration="{2F49FCB4-E357-F4CD-D8A7-D78B6C8E8707}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Token.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Player.cs">
     <Files>
       <File FileName="Assets/Scripts/Bullet.cs" Line="77" Column="23" />
-      <File FileName="Assets/MusicManager.cs" Line="39" Column="1" />
-      <File FileName="Assets/Scripts/MovingPlatform.cs" Line="44" Column="1" />
-      <File FileName="Assets/Scripts/MenuManager.cs" Line="4" Column="1" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="88" Column="1" />
-      <File FileName="Assets/Scripts/Player.cs" Line="111" Column="23" />
-      <File FileName="Assets/Scripts/SpawnerManager.cs" Line="125" Column="1" />
-      <File FileName="Assets/Scripts/Enemy1.cs" Line="19" Column="6" />
-      <File FileName="Assets/Scripts/Enemy2.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Enemy3.cs" Line="30" Column="10" />
-      <File FileName="Assets/Scripts/EnemySettings.cs" Line="97" Column="29" />
-      <File FileName="Assets/Scripts/LookAtPlayer.cs" Line="1" Column="1" />
-      <File FileName="Assets/Token.cs" Line="7" Column="13" />
+      <File FileName="Assets/MusicManager.cs" />
+      <File FileName="Assets/Scripts/MovingPlatform.cs" />
+      <File FileName="Assets/Scripts/MenuManager.cs" />
+      <File FileName="Assets/Scripts/GameManager.cs" />
+      <File FileName="Assets/Scripts/Player.cs" Line="115" Column="1" />
+      <File FileName="Assets/Scripts/SpawnerManager.cs" />
+      <File FileName="Assets/Scripts/Enemy1.cs" />
+      <File FileName="Assets/Scripts/Enemy2.cs" />
+      <File FileName="Assets/Scripts/Enemy3.cs" />
+      <File FileName="Assets/Scripts/EnemySettings.cs" />
+      <File FileName="Assets/Scripts/LookAtPlayer.cs" />
+      <File FileName="Assets/Token.cs" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="IPG_Midterm1" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="Scripts" expanded="True" />
-              <Node name="Token.cs" selected="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="f112919d-0bb8-4b90-a591-8457dc8f6b6b" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="79c52434-0423-42b0-949a-cbc73d9cc017" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

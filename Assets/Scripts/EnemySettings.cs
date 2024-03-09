@@ -19,7 +19,7 @@ public class EnemySettings : MonoBehaviour
 
     protected NavMeshAgent nav;
 
-    NavMeshHit closestHit;
+    //NavMeshHit closestHit;
  
 
 
@@ -36,16 +36,16 @@ protected virtual void Start() //protected virtual = enables overriding it in la
 
 
 
-        if (NavMesh.SamplePosition(gameObject.transform.position, out closestHit, 500f, NavMesh.AllAreas))
-        {
-            gameObject.transform.position = closestHit.position;
-        }
+        //if (NavMesh.SamplePosition(gameObject.transform.position, out closestHit, 500f, NavMesh.AllAreas))
+        //{
+        //    gameObject.transform.position = closestHit.position;
+        //}
            
-        else
-        {
+        //else
+        //{
 
-            Debug.LogError("Could not find position on NavMesh!");
-        }
+        //    Debug.LogError("Couldn't find position on NavMesh!");
+        //}
 
 
 

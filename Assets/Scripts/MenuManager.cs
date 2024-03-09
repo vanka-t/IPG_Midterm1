@@ -8,23 +8,28 @@ public class MenuManager : MonoBehaviour
 {
     [SerializeField]
     AudioClip bgMusic;
+    [SerializeField]
+    AudioClip buttonSound;
 
     // Start is called before the first frame update
     private void Start()
     {
-      //  MusicManager.instance.SwitchMusic(bgMusic);
+       MusicManager.instance.SwitchMusic(bgMusic);
         
     }
 
     
         public void StartGame()
         {
+            AudioSource.PlayClipAtPoint(buttonSound, transform.position, 1);
+
             SceneManager.LoadScene("GameScene");
         }
 
     public void RestartGame()
     {
         SceneManager.LoadScene("GameScene");
+
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

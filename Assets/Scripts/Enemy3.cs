@@ -23,7 +23,7 @@ public class Enemy3 : EnemySettings
         }
         else
         {
-            SpawnerManager.instance.RemoveEnemy(this);//this line needs to be rewritten since the function overrides the original EnemySettings Death function
+            SpawnerManager.instance.RemoveEnemy(this);//this line is rewritten since the function overrides the original EnemySettings Death function
             //if killed upon 1 revival, it finally dies
             Destroy(gameObject);
 

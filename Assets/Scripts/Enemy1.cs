@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy1 : EnemySettings
 {
 
+
     protected override void TimerContent()
     {
         //recover health

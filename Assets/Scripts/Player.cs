@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     private CharacterController charController;
     //basic settings
    // [SerializeField]
-    private float speed = 7;
+    private float speed = 15;
     private float mouseSensitivity = 3.5f;
 
     //position coordinates
@@ -91,12 +91,8 @@ public class Player : MonoBehaviour
 
 
 
-            // if (charController.isGrounded)//also built in
-            //  {
             Debug.Log(transform.position.x + ", " + transform.position.y + "," + transform.position.z);
-            //Debug.Log("XPos: " + transform.position.x);
-           // print("YPos: " + transform.position.y);
-            print("ZPos: " + transform.position.z);
+            
             if (Input.GetKeyDown(KeyCode.Space) && charController.isGrounded)
                 {
                     print(currentYVel);
