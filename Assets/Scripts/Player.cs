@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     float gravityValue = Physics.gravity.y; //built in
 
     //y axis speed (jumping vel)
-    float jumpHeight = -2f;
+    float jumpHeight = -1f;
     float currentYVel;
 
     [SerializeField]
@@ -91,7 +91,7 @@ public class Player : MonoBehaviour
 
 
 
-            Debug.Log(transform.position.x + ", " + transform.position.y + "," + transform.position.z);
+            //Debug.Log(transform.position.x + ", " + transform.position.y + "," + transform.position.z);
             
             if (Input.GetKeyDown(KeyCode.Space) && charController.isGrounded)
                 {
