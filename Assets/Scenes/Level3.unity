@@ -8436,7 +8436,7 @@ MonoBehaviour:
   - {x: -20, y: 0, z: 60}
   - {x: 0, y: 0, z: 60}
   m_Extrude: 10
-  m_EditMode: 3
+  m_EditMode: 0
   m_FlipNormals: 1
   isOnGrid: 1
 --- !u!114 &193903844
@@ -9243,7 +9243,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 41532493}
-  m_VersionIndex: 62
+  m_VersionIndex: 66
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
