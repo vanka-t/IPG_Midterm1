@@ -6,6 +6,9 @@ using VanessaMusic.Utilities;
 
 public class MenuManager : MonoBehaviour
 {
+
+    public AudioClip bgMusic1;
+
     [SerializeField]
     AudioClip bgMusic;
     [SerializeField]
@@ -18,8 +21,19 @@ public class MenuManager : MonoBehaviour
         
     }
 
-    
-        public void StartGame()
+    private void Update()
+    {
+        Scene sceneID = SceneManager.GetActiveScene();
+
+        if (sceneID.name == "GameScene")
+        {
+            print("teehee");
+            MusicManager.instance.SwitchMusic(bgMusic1);
+
+        }
+    }
+
+    public void StartGame()
         {
             AudioSource.PlayClipAtPoint(buttonSound, transform.position, 1);
 

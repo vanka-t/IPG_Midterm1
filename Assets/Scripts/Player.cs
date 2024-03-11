@@ -184,7 +184,7 @@ public class Player : MonoBehaviour
 
     public void NewLevel()
     {
-        if (levelNum == 1)
+        if (levelNum >= 1)
         {
             transform.position = new Vector3(0, 0, 0);
             Debug.Log(transform.position.x + ", " + transform.position.y + "," + transform.position.z);

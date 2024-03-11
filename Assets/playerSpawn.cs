@@ -10,5 +10,6 @@ public class playerSpawn : MonoBehaviour
     {
         GameObject player = GameObject.FindWithTag("Player");
         player.transform.position = startPos;
+        print("Good MORNING");
     }
 }

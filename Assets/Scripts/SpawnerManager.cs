@@ -9,6 +9,7 @@ public class SpawnerManager : MonoBehaviour
     public static SpawnerManager instance;
 
     //adds list/array to component on inspector
+   // public EnemyBullet prefab_EnemyBullets;
     public Bullet prefab_Bullets;
     public EnemySettings[] prefab_Enemies;
 

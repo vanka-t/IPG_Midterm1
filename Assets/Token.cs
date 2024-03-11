@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Token : MonoBehaviour
 {
-    public AudioClip collectSound;
+    //public AudioClip collectSound;
 
     // Start is called before the first frame update
     void Start()

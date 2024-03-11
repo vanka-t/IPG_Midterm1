@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement; //always add when dealing w multiple scenes
+using VanessaMusic.Utilities;
 
 
 public class GameManager : MonoBehaviour
 {
+
     
-   
 
     public static GameManager instance;
     public Transform player;
@@ -29,7 +30,9 @@ public class GameManager : MonoBehaviour
     public GameObject healthBar;
 
 
+    AudioSource source;
 
+    public AudioClip bgMusic1;
 
     void Awake()
     {
@@ -42,20 +45,26 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        source = GetComponent<AudioSource>();
 
 
-        
     }
 
      void Update()
     {
-        //if (isGameOver)
-        //{
-        //    print("yippeee");
-        //  //  SceneManager.LoadScene("GameOverScene");
+        Scene sceneID = SceneManager.GetActiveScene();
 
-        //}
+        if (sceneID.name == "GameScene")
+        {
+            print("teehee");
+            source.clip = bgMusic1;
+            source.Play();
 
+        } else
+        {
+            print("no teehee");
+
+        }
     }
 
     public void GameOver()
@@ -78,11 +87,11 @@ public class GameManager : MonoBehaviour
     {
         print("WIIIIIIINNNNN");
        isLevelComplete = true;
-
-
         youWinPage.SetActive(true); //display gameover UI
+        //NextLevel();
+       
 
-       // levelComplete = false;
+        //levelComplete = false;
 
     }
 
@@ -93,10 +102,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(playerObj);
         DontDestroyOnLoad(healthBar);
         isLevelComplete = false;
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // go to next scene/level
-        playerObj.transform.position = new Vector3(0, 0, 0);
         youWinPage.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // go to next scene/level
+        
+        playerObj.transform.position = new Vector3(0, 0, 0);
+      
 
 
 
