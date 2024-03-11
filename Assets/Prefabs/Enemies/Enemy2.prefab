@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c5ecb562b6fad408e9e9d50aea7e6b48, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -138,10 +138,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138386797373111425}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d42e4ec91cdd04edfa9c06e0d03f9af2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hpTotal: 100
   timerTotal: 1
+  bulletTimer: 5
+  enemySpeed: 0
+  enemyBullet: {fileID: 0}
+  spawnPoint: {fileID: 0}
