@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     Transform gunPoint;
 
 
+    float p1 = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -53,10 +54,9 @@ public class Player : MonoBehaviour
         //    float Z = PlayerPrefs.GetFloat("ZPos");
         //    transform.position = new Vector3(X, Y, Z);
         //    print("mu ca kari");
-           
+
         //}
-
-
+        
     }
 
     // Update is called once per frame
@@ -88,6 +88,8 @@ public class Player : MonoBehaviour
 
                 );
 
+           
+          
 
 
 
