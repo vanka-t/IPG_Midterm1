@@ -34,8 +34,9 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private HealthBar healthBar;
-    public AudioSource ouchSound;
-
+    
+    public AudioSource Source;
+    public AudioClip ouchSound;
 
 
 
@@ -43,7 +44,7 @@ public class Player : MonoBehaviour
     void Start()
     {
 
-        ouchSound = GetComponent<AudioSource>();
+        Source = GetComponent<AudioSource>();
         charController = GetComponent<CharacterController>();
         cameraTrans = Camera.main.transform;
 
@@ -142,7 +143,8 @@ public class Player : MonoBehaviour
 
             } else //take damage
             {
-                ouchSound.Play();
+                Source.clip = ouchSound;
+                Source.Play();
                 healthBar.UpdateHealthBar(maxHealth, currentHealth);
             }
             
