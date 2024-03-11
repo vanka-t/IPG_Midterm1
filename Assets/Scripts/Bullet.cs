@@ -67,7 +67,8 @@ public class Bullet : MonoBehaviour
     //when shooting enemy
     private void OnTriggerEnter(Collider other)
     {
-        if(!isBulletTriggered && !other.CompareTag("Player") && !other.CompareTag("Bullet") && !other.CompareTag("MovingPlatform") && !other.CompareTag("Environment")) //excluding contact w player + other bullets + platform
+        print(other.gameObject.name);
+        if(!isBulletTriggered && !other.CompareTag("Player") && !other.CompareTag("Bullet")) //&& !other.CompareTag("MovingPlatform") && !other.CompareTag("Environment")) //excluding contact w player + other bullets + platform
          {
             BulletTriggered();
             if (other.CompareTag("Enemy"))
