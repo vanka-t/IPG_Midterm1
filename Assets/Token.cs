@@ -23,7 +23,7 @@ public class Token : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            AudioSource.PlayClipAtPoint(collectSound, transform.position, 1);
+           // AudioSource.PlayClipAtPoint(collectSound, transform.position, 1);
             Destroy(gameObject);
         }
     }

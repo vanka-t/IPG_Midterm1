@@ -34,11 +34,14 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private HealthBar healthBar;
-    
+
+    //AUDIO SETTINGS
     public AudioSource Source;
     public AudioClip ouchSound;
+    public AudioClip collectSound;
+    public AudioClip shootSound;
 
-
+    private int levelNum = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -56,14 +59,22 @@ public class Player : MonoBehaviour
         //restarting health
         currentHealth = maxHealth;
         healthBar.UpdateHealthBar(maxHealth, currentHealth);
-        
+
+
+        if (levelNum == 1)
+        {
+            transform.position = new Vector3(0, 0, 0);
+            Debug.Log(transform.position.x + ", " + transform.position.y + "," + transform.position.z);
+            // print("");
+
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         //if games not over
-        if (!GameManager.instance.isGameOver)
+        if (!GameManager.instance.isGameOver && !GameManager.instance.isLevelComplete)
         {
             
             //print("Game's not over");
@@ -114,6 +125,8 @@ public class Player : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.X))
             {
+                Source.clip = shootSound;
+                Source.Play();
                 SpawnerManager.instance.SpawnBullet(gunPoint.position, cameraTrans.rotation);
             }
         }
@@ -153,9 +166,11 @@ public class Player : MonoBehaviour
         //if finding token
          if (other.CompareTag("Token"))
         {
+            Source.clip = collectSound;
+            Source.Play();
             print("Token collected!");
-           // GameManager.instance.levelComplete = true;
-            //  Health points -= 1
+            levelNum += 1;
+            print(levelNum);
 
 
             Cursor.lockState = CursorLockMode.None;
@@ -166,6 +181,19 @@ public class Player : MonoBehaviour
 
 
     }
+
+    public void NewLevel()
+    {
+        if (levelNum == 1)
+        {
+            transform.position = new Vector3(0, 0, 0);
+            Debug.Log(transform.position.x + ", " + transform.position.y + "," + transform.position.z);
+            // print("");
+
+        }
+    }
+
+
 
 
 }

@@ -70,6 +70,7 @@
     <Compile Include="Assets/Scripts/Player.cs" />
     <Compile Include="Assets/Scripts/GameManager.cs" />
     <Compile Include="Assets/Scripts/HealthBar.cs" />
+    <Compile Include="Assets/playerSpawn.cs" />
     <Compile Include="Assets/Scripts/MovingPlatform.cs" />
     <Compile Include="Assets/Token.cs" />
   </ItemGroup>

@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool isGameOver = false;
    // public bool nextLevel = false;
-    public bool levelComplete = false;
-    public bool level2 = false;
+    public bool isLevelComplete = false;
+    //public bool level2 = false;
 
     // [SerializeField]
     // AudioClip bgMusic;
@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public GameObject youWinPage;
 
     public GameObject playerObj;
+    public GameObject healthBar;
 
 
 
@@ -76,7 +77,7 @@ public class GameManager : MonoBehaviour
     public void LevelComplete()
     {
         print("WIIIIIIINNNNN");
-       levelComplete = true;
+       isLevelComplete = true;
 
 
         youWinPage.SetActive(true); //display gameover UI
@@ -88,10 +89,16 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
+        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(playerObj);
+        DontDestroyOnLoad(healthBar);
+        isLevelComplete = false;
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-      //  DontDestroyOnLoad(playerObj);
-        level2 = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // go to next scene/level
+        playerObj.transform.position = new Vector3(0, 0, 0);
+        youWinPage.SetActive(false);
+
+
 
 
     }
