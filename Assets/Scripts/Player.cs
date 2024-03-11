@@ -41,6 +41,8 @@ public class Player : MonoBehaviour
     public AudioClip collectSound;
     public AudioClip shootSound;
 
+    public GameObject deathZone;
+
     private int levelNum = 0;
 
     // Start is called before the first frame update
@@ -135,15 +137,26 @@ public class Player : MonoBehaviour
 
 
         }
-   
+
     private void OnTriggerEnter(Collider other)
     {
         //if colliding with enemy
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") || other.CompareTag("DeathZone"))
         {
+            
+            //different damage depending on whether player fell in lava (fatal) or hit by enemy
+            if (other.CompareTag("DeathZone"))
+            {
+                print("death zone");
+                currentHealth -= 100;
+            } else
+            {
+                print("normal enemy");
+                currentHealth -= Random.Range(0.1f, 1.5f); //deduct health points
 
+            }
            
-            currentHealth -= Random.Range(0.1f, 1.5f); //deduct health points
+            
             print(currentHealth);
 
             if ( currentHealth <= 0) //game over
@@ -166,6 +179,7 @@ public class Player : MonoBehaviour
         //if finding token
          if (other.CompareTag("Token"))
         {
+
             Source.clip = collectSound;
             Source.Play();
             print("Token collected!");
