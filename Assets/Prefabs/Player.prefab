@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunPoint: {fileID: 2767910639934061668}
+  healthBar: {fileID: 0}
 --- !u!143 &3865813993223847787
 CharacterController:
   m_ObjectHideFlags: 0

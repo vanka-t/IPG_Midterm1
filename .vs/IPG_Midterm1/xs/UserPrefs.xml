@@ -1,20 +1,20 @@
 ﻿<Properties StartupConfiguration="{2F49FCB4-E357-F4CD-D8A7-D78B6C8E8707}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Library/PackageCache/com.unity.probuilder@5.1.0/Runtime/Core/Submesh.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/HealthBar.cs">
     <Files>
-      <File FileName="Assets/Scripts/Bullet.cs" Line="77" Column="23" />
+      <File FileName="Assets/Scripts/Bullet.cs" Line="7" Column="20" />
       <File FileName="Assets/MusicManager.cs" />
-      <File FileName="Assets/Scripts/MovingPlatform.cs" />
+      <File FileName="Assets/Scripts/MovingPlatform.cs" Line="43" Column="2" />
       <File FileName="Assets/Scripts/MenuManager.cs" />
-      <File FileName="Assets/Scripts/GameManager.cs" />
-      <File FileName="Assets/Scripts/Player.cs" Line="66" Column="1" />
-      <File FileName="Assets/Scripts/SpawnerManager.cs" />
-      <File FileName="Assets/Scripts/Enemy1.cs" />
-      <File FileName="Assets/Scripts/Enemy2.cs" Line="14" Column="2" />
-      <File FileName="Assets/Scripts/Enemy3.cs" />
-      <File FileName="Assets/Scripts/EnemySettings.cs" />
-      <File FileName="Assets/Scripts/LookAtPlayer.cs" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="88" Column="1" />
+      <File FileName="Assets/Scripts/Player.cs" Line="100" Column="1" />
+      <File FileName="Assets/Scripts/SpawnerManager.cs" Line="12" Column="6" />
+      <File FileName="Assets/Scripts/Enemy2.cs" Line="43" Column="8" />
+      <File FileName="Assets/Scripts/EnemySettings.cs" Line="25" Column="4" />
+      <File FileName="Assets/Scripts/Enemy1.cs" Line="7" Column="1" />
+      <File FileName="Assets/Scripts/HealthBar.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Enemy3.cs" Line="30" Column="10" />
+      <File FileName="Assets/Scripts/LookAtPlayer.cs" Line="1" Column="1" />
       <File FileName="Assets/Token.cs" />
-      <File FileName="Library/PackageCache/com.unity.probuilder@5.1.0/Runtime/Core/Submesh.cs" Line="144" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

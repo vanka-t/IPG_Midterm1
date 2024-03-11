@@ -7,15 +7,14 @@ public class Player : MonoBehaviour
 
 
     private CharacterController charController;
-    //basic settings
-   // [SerializeField]
+    //BASIC SETTINGS
     private float speed = 15;
     private float mouseSensitivity = 3.5f;
 
-    //position coordinates
-    private float xPos = -45;
-    private float yPos = 12;
-    private float zPos = -4;
+    ////position coordinates
+    //private float xPos = -45;
+    //private float yPos = 12;
+    //private float zPos = -4;
 
     Transform cameraTrans;
     //camera pitch angle
@@ -29,16 +28,20 @@ public class Player : MonoBehaviour
     [SerializeField]
     Transform gunPoint;
 
+    //HEALTH SETTINGS
+    private float maxHealth = 5;
+    private float currentHealth;
 
-    float p1 = 3;
+    [SerializeField]
+    private HealthBar healthBar;
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        //setting player coordinates in order to control position when scenes change 
-        PlayerPrefs.SetFloat("XPos", -45);// xPos);
-        PlayerPrefs.SetFloat("YPos", 15);//yPos);
-        PlayerPrefs.SetFloat("ZPos", -4);//zPos);
+
 
         charController = GetComponent<CharacterController>();
         cameraTrans = Camera.main.transform;
@@ -47,15 +50,10 @@ public class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        //if (GameManager.instance.level2)
-        //{
-        //    float X = PlayerPrefs.GetFloat("XPos");
-        //    float Y = PlayerPrefs.GetFloat("YPos");
-        //    float Z = PlayerPrefs.GetFloat("ZPos");
-        //    transform.position = new Vector3(X, Y, Z);
-        //    print("mu ca kari");
 
-        //}
+        //restarting health
+        currentHealth = maxHealth;
+        healthBar.UpdateHealthBar(maxHealth, currentHealth);
         
     }
 
@@ -97,7 +95,7 @@ public class Player : MonoBehaviour
             
             if (Input.GetKeyDown(KeyCode.Space) && charController.isGrounded)
                 {
-                    print(currentYVel);
+                   // print(currentYVel);
                     //jump
                     currentYVel += Mathf.Sqrt(2 * jumpHeight * gravityValue); //jump formula physics
                 }
@@ -128,14 +126,25 @@ public class Player : MonoBehaviour
         //if colliding with enemy
         if (other.CompareTag("Enemy"))
         {
-            //GameManager.instance.isGameOver = true;
-            //  Health points -= 1
 
+           
+            currentHealth -= Random.Range(0.1f, 1.5f); //deduct health points
+            print(currentHealth);
 
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            GameManager.instance.GameOver();
-            print("ouch!");
+            if ( currentHealth <= 0) //game over
+            {
+
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                GameManager.instance.GameOver();
+                print("ouch!");
+
+            } else //take damage
+            {
+                
+                healthBar.UpdateHealthBar(maxHealth, currentHealth);
+            }
+            
         }
 
         //if finding token

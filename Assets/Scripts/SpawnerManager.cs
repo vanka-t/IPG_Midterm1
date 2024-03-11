@@ -137,7 +137,7 @@ public class SpawnerManager : MonoBehaviour
         {
             Collider[] hitColliders = Physics.OverlapSphere( //creates an invisible sphere collider
                 sP.position,
-                30,
+                30, //change?
                 playerLayerMask
                 );
 

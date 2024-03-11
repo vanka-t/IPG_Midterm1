@@ -373,6 +373,7 @@
 "Assets/Scripts/Enemy3.cs"
 "Assets/Scripts/EnemySettings.cs"
 "Assets/Scripts/GameManager.cs"
+"Assets/Scripts/HealthBar.cs"
 "Assets/Scripts/LookAtPlayer.cs"
 "Assets/Scripts/MenuManager.cs"
 "Assets/Scripts/MovingPlatform.cs"

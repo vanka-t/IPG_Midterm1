@@ -22,14 +22,7 @@ public class EnemySettings : MonoBehaviour
     private float timerTotal = 1f;
 
 
-    //SHOOT
-    //[SerializeField]
-    private float bulletTimer = 5; //timer to shoot at player
-    public float enemySpeed;//
-    private float bulletTime;
-
-    public GameObject enemyBullet;
-    public Transform spawnPoint;
+   
 
     protected NavMeshAgent nav;
 
@@ -111,21 +104,5 @@ protected virtual void Start() //protected virtual = enables overriding it in la
         Destroy(gameObject);
     }
 
-    protected virtual void ShootAtPlayer()
-    {
-        bulletTime -= Time.deltaTime;
-
-        if (bulletTime > 0) return;
-
-        bulletTime = bulletTimer;
-
-        //spawning bullets from  enemySpawnPoint
-        GameObject bulletObj = Instantiate(enemyBullet, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
-        Rigidbody bulletRig = bulletObj.GetComponent<Rigidbody>();
-        bulletRig.AddForce(bulletRig.transform.forward * enemySpeed);
-        Destroy(bulletObj, 0.1f);
-
-
-
-    }
+    
 }
