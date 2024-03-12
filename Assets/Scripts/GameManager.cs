@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     public AudioSource Source;
     public AudioClip menuMusic;
     public AudioClip level1Music;
-    public AudioClip level2Music;
+    public AudioClip level2Music, gameOverMusic;
 
     private string currentScene;
 
@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
 
         if (currentScene == "MainMenu")
         {
+            
             Source.clip = menuMusic;
 
             //MusicManager.instance.SwitchMusic(menuMusic);
@@ -87,23 +88,17 @@ public class GameManager : MonoBehaviour
         }
         else if (currentScene == "GameScene")
         {
-            // Source.Stop();
-            Source.clip = level1Music;
-            //if (!Source.isPlaying)
-            //{
-            //    print("not playing");// + currentScene);
-            //    Source.Play();
-            //}
-            //print(currentScene);
-
-            //Source.clip = menuMusic;
+            // level 1 music
+            // switch to "game over" music when dying
+            Source.clip = isGameOver ? gameOverMusic :  level1Music;
+     
 
 
         }
         else if (currentScene == "Level2a")
         {
-            print("level 2");
-            Source.clip = level2Music;
+            
+            Source.clip = isGameOver ? gameOverMusic : level2Music;
         }
 
 
@@ -112,7 +107,8 @@ public class GameManager : MonoBehaviour
     {
         //games over
         isGameOver = true;
-       
+        Source.clip = menuMusic;
+
         gameOverPage.SetActive(true); //display gameover UI
 
         
