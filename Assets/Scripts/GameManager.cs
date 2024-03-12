@@ -31,14 +31,12 @@ public class GameManager : MonoBehaviour
 
 
     
-    public int levelCount = 0;
+   // public int levelCount = 0;
 
 
-
+    //background music
     public AudioSource Source;
-    public AudioClip menuMusic;
-    public AudioClip level1Music;
-    public AudioClip level2Music, gameOverMusic;
+    public AudioClip menuMusic, level1Music, level2Music, gameOverMusic;
 
     private string currentScene;
 
@@ -74,33 +72,33 @@ public class GameManager : MonoBehaviour
     //changing music depending on scene
     public void BackgroundMusic()
     {
-
+      
 
         currentScene = SceneManager.GetActiveScene().name;
 
-        if (currentScene == "MainMenu")
+        
+        switch (currentScene)
         {
-            
-            Source.clip = menuMusic;
+            //menu music
+            case "MainMenu":
+                Source.clip = menuMusic;
+                break;
+           //lvl 1
+            case "GameScene":
+                Source.clip = isGameOver ? gameOverMusic : level1Music;
+                break;
+            //lvl 2
+            case "Level3":
+                Source.clip = isGameOver ? gameOverMusic : level2Music;
+                break;
+            //lvl 3
+            case "Level2a":
+                Source.clip = isGameOver ? gameOverMusic : level1Music;
+                break;
+             //final Winning page
 
-            //MusicManager.instance.SwitchMusic(menuMusic);
 
         }
-        else if (currentScene == "GameScene")
-        {
-            // level 1 music
-            // switch to "game over" music when dying
-            Source.clip = isGameOver ? gameOverMusic :  level1Music;
-     
-
-
-        }
-        else if (currentScene == "Level2a")
-        {
-            
-            Source.clip = isGameOver ? gameOverMusic : level2Music;
-        }
-
 
         }
     public void GameOver()
@@ -129,6 +127,7 @@ public class GameManager : MonoBehaviour
     {
         print("WIIIIIIINNNNN");
        isLevelComplete = true;
+        Source.Pause();
         youWinPage.SetActive(true); //display gameover UI
         //NextLevel();
        
