@@ -6,6 +6,7 @@ public class Token : MonoBehaviour
 {
     //public AudioClip collectSound;
 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,8 @@ public class Token : MonoBehaviour
         {
            // AudioSource.PlayClipAtPoint(collectSound, transform.position, 1);
             Destroy(gameObject);
+
+
         }
     }
 }
