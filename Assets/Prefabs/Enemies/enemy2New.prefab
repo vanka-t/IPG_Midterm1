@@ -175,7 +175,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4796589769281695951}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 7.65
+  m_Radius: 4.97
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -207,7 +207,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 18.13, y: 22.11, z: 1}
+  m_Size: {x: 4.78, y: 21.58, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &809522012567862121
 MonoBehaviour:
@@ -222,9 +222,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpTotal: 100
+  timer: 0
   timerTotal: 1
-  Source: {fileID: 0}
-  enemyHitSound: {fileID: 0}
 --- !u!4 &5321909334370593397 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 326c19498b62e4da3926cce613bc5d7c, type: 3}
