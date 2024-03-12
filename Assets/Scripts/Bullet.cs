@@ -18,7 +18,8 @@ public class Bullet : MonoBehaviour
     float timerTotal = 3;
     bool isBulletTriggered = false;
 
-
+    public AudioSource Source;
+    public AudioClip enemyHitSound;
 
     // Start is called before the first frame update
     private void Start()
@@ -67,13 +68,17 @@ public class Bullet : MonoBehaviour
     //when shooting enemy
     private void OnTriggerEnter(Collider other)
     {
+
         print(other.gameObject.name);
         if(!isBulletTriggered && !other.CompareTag("Player") && !other.CompareTag("Bullet")) //&& !other.CompareTag("MovingPlatform") && !other.CompareTag("Environment")) //excluding contact w player + other bullets + platform
          {
             BulletTriggered();
             if (other.CompareTag("Enemy"))
             {
+                Source.clip = enemyHitSound;
+                Source.Play();
                 Debug.Log("ENEMY HIT!!!!");
+                //audioclip play
                 var enemy = other.GetComponent<EnemySettings>();
                 enemy.Damaged(damage);
                 particle.Play();

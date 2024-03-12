@@ -22,7 +22,9 @@ public class EnemySettings : MonoBehaviour
     private float timerTotal = 1f;
 
 
-   
+    public AudioSource Source;
+    public AudioClip enemyHitSound;
+
 
     protected NavMeshAgent nav;
 
@@ -100,6 +102,8 @@ protected virtual void Start() //protected virtual = enables overriding it in la
 
     protected virtual void Death()
     {
+        Source.clip = enemyHitSound;
+        Source.Play();
         SpawnerManager.instance.RemoveEnemy(this);
         Destroy(gameObject);
     }
