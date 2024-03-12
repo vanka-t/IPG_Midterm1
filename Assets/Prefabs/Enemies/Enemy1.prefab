@@ -68,8 +68,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0
+  m_Height: 1.49
+  m_BaseOffset: 0.25
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &7494757889277472860
@@ -86,6 +86,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpTotal: 100
   timerTotal: 1
+  Source: {fileID: 0}
+  enemyHitSound: {fileID: 0}
 --- !u!114 &7637276318277531541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpTotal: 100
   timerTotal: 1
+  Source: {fileID: 0}
+  enemyHitSound: {fileID: 0}
 --- !u!135 &7274921782412999149
 SphereCollider:
   m_ObjectHideFlags: 0

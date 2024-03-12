@@ -2,14 +2,18 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement; //always add when dealing w multiple scenes
 
 //SINGLETON
 public class SpawnerManager : MonoBehaviour
 {
     public static SpawnerManager instance;
 
+
+    public int currentLevelInput;
+
     //adds list/array to component on inspector
-   // public EnemyBullet prefab_EnemyBullets;
+    // public EnemyBullet prefab_EnemyBullets;
     public Bullet prefab_Bullets;
     public EnemySettings[] prefab_Enemies;
 
@@ -29,52 +33,48 @@ public class SpawnerManager : MonoBehaviour
     LayerMask playerLayerMask;
 
 
-  
 
-
-
-
-    //Spawning mechanics
-
-
-
+    // Struct to define spawn rates based on level
     struct SpawnRate
     {
         public float spawnRate_Enemy1;
         public float spawnRate_Enemy2;
         public float spawnRate_Enemy3;
 
-        //constructor
+        // Constructor
         public SpawnRate(int currentLevel)
         {
-            //changing spawning rate according to difficulty of round
+            
             if (currentLevel == 1)
             {
-                spawnRate_Enemy1 = 0.003f;
-                spawnRate_Enemy2 = 0.002f;
-                spawnRate_Enemy3 = 0.001f;
-            } else if (currentLevel == 2)
+                // For level 1, only spawn Enemy2
+                spawnRate_Enemy1 = 0f;
+                spawnRate_Enemy2 = 0.006f;
+                spawnRate_Enemy3 = 0f;
+            }
+            else if (currentLevel == 2)
             {
-                spawnRate_Enemy1 = 0.09f;
-                spawnRate_Enemy2 = 0.08f;
-                spawnRate_Enemy3 = 0.07f;
+                // For level 2, only spawn Enemy1
+                spawnRate_Enemy1 = 0.0009f;
+                spawnRate_Enemy2 = 0f;
+                spawnRate_Enemy3 = 0f;
             }
             else
             {
+                // For level 3, spawn both Enemy1 and Enemy2
                 spawnRate_Enemy1 = 0.03f;
-                spawnRate_Enemy2 = 0.02f;
-                spawnRate_Enemy3 = 0.01f;
+                spawnRate_Enemy2 = 0.005f;
+                spawnRate_Enemy3 = 0f;
             }
-
         }
     }
 
-    SpawnRate currentSpawnRate = new SpawnRate(1);
 
+    SpawnRate currentSpawnRate;
 
-     void Awake()
+    void Awake()
     {
-        //same as music manager
+     
         if (instance == null)
         {
             instance = this;
@@ -84,45 +84,39 @@ public class SpawnerManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        // Set currentSpawnRate based on GameManager's sceneIndex
+       // int currentLevel = GameManager.instance.sceneIndex; 
+        currentSpawnRate = new SpawnRate(currentLevelInput);
     }
 
     // Update is called once per frame
     private void Update()
     {
-        
-        //var random_val = Random.value;
+        // Spawn enemies based on random values and spawn rates
         if (Random.value < currentSpawnRate.spawnRate_Enemy1)
         {
-            //(old code)
-            //var enemy = Instantiate(prefab_Enemies[0], enemyZones);
-            //enemy.transform.position = FindAvailableSpawnPoint().position;
             Transform spawnPoint = FindAvailableSpawnPoint();
             if (spawnPoint != null)
             {
-                //Spawn Enemy LV 1
+                // Spawn Enemy LV 1
                 SpawnEnemies(0, spawnPoint.position, spawnPoint.rotation);
             }
-
-            
-
-            
-
-        } else if (Random.value < currentSpawnRate.spawnRate_Enemy2)
+        }
+        else if (Random.value < currentSpawnRate.spawnRate_Enemy2)
         {
             Transform spawnPoint = FindAvailableSpawnPoint();
             if (spawnPoint != null)
             {
-                //Spawn Enemy LV 2
+                // Spawn Enemy LV 2
                 SpawnEnemies(1, spawnPoint.position, spawnPoint.rotation);
             }
         }
         else if (Random.value < currentSpawnRate.spawnRate_Enemy3)
         {
             Transform spawnPoint = FindAvailableSpawnPoint();
-   
             if (spawnPoint != null)
             {
-                //Spawn Enemy LV 3
+                // Spawn Enemy LV 3
                 SpawnEnemies(2, spawnPoint.position, spawnPoint.rotation);
             }
         }
@@ -130,86 +124,73 @@ public class SpawnerManager : MonoBehaviour
 
     private Transform FindAvailableSpawnPoint()
     {
-        //create an available list of spawnpoints
-        //if player is nearby, temporarily disable it
+        // Find available spawn points based on player proximity
         List<Transform> availableSpawnPoints = new List<Transform>();
-        //when calling, it returns the random spaw point chosen
-        foreach(Transform sP in spawnPoints)
+        foreach (Transform sP in spawnPoints)
         {
-            Collider[] hitColliders = Physics.OverlapSphere( //creates an invisible sphere collider
+            Collider[] hitColliders = Physics.OverlapSphere(
                 sP.position,
-                30, //change?
+                30, // Change to desired radius
                 playerLayerMask
-                );
+            );
 
             if (hitColliders.Length == 0)
             {
-                //no player nearby
+                // No player nearby
                 availableSpawnPoints.Add(sP);
             }
         }
-
-
 
         if (availableSpawnPoints.Count == 0)
         {
             return null;
         }
 
-        //if theres available spawnPoints --> return a random one
+        // Return a random available spawn point
         return availableSpawnPoints[Random.Range(0, availableSpawnPoints.Count)];
-
-
-        //  return spawnPoints[Random.Range(0, spawnPoints.Length)];
     }
 
-    //generating bullets
+    // Method to spawn bullets
     public void SpawnBullet(Vector3 pos, Quaternion rot)
     {
-        Bullet bullet = Instantiate(prefab_Bullets, bulletGroup); //change
+        Bullet bullet = Instantiate(prefab_Bullets, bulletGroup);
         bullet.transform.position = pos;
         bullet.transform.rotation = rot;
-
         bulletList.Add(bullet);
-
     }
+
+    // Method to remove bullets
     public void RemoveBullet(Bullet bullet)
     {
         bulletList.Remove(bullet);
     }
 
-    //generating enemies
+    // Method to spawn enemies
     public void SpawnEnemies(int id, Vector3 pos, Quaternion rot)
     {
         EnemySettings enemy = Instantiate(prefab_Enemies[id], enemyZones);
         enemy.transform.position = pos;
         enemy.transform.rotation = rot;
-
         enemyList.Add(enemy);
     }
 
-
-
+    // Method to remove enemies
     public void RemoveEnemy(EnemySettings enemy)
     {
-        if(enemy as Enemy1)
+        if (enemy as Enemy1)
         {
-            currentSpawnRate.spawnRate_Enemy1 += 0.0001f;
-
-        } else if (enemy as Enemy2)
+            currentSpawnRate.spawnRate_Enemy1 += 0.0006f;
+        }
+        else if (enemy as Enemy2)
         {
-            currentSpawnRate.spawnRate_Enemy2 += 0.0001f;
-
-        } else if (enemy as Enemy3)
+            currentSpawnRate.spawnRate_Enemy2 += 0.0007f;
+        }
+        else if (enemy as Enemy3)
         {
-            currentSpawnRate.spawnRate_Enemy3 += 0.0001f;
-
+            currentSpawnRate.spawnRate_Enemy3 += 0.0009f;
         }
 
         enemyList.Remove(enemy);
-
-
     }
 
-   
 }

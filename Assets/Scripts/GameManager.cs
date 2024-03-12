@@ -27,11 +27,11 @@ public class GameManager : MonoBehaviour
     public GameObject playerObj;
     public GameObject healthBar;
 
+    public int sceneIndex = 0;
 
 
 
-    
-   // public int levelCount = 0;
+    // public int levelCount = 0;
 
 
     //background music
@@ -61,6 +61,9 @@ public class GameManager : MonoBehaviour
 
      public void Update()
     {
+        sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        print(sceneIndex);
+
         BackgroundMusic();
         if (!Source.isPlaying)
         {
@@ -93,7 +96,7 @@ public class GameManager : MonoBehaviour
                 break;
             //lvl 3
             case "Level2a":
-                Source.clip = isGameOver ? gameOverMusic : level1Music;
+                Source.clip = isGameOver ? gameOverMusic : level2Music;
                 break;
              //final Winning page
 
