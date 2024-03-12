@@ -36,7 +36,8 @@ public class GameManager : MonoBehaviour
 
 
     public AudioSource Source;
-    public AudioClip bgMusic1;
+    public AudioClip menuMusic;
+    public AudioClip level1Music;
 
     private string currentScene;
 
@@ -45,9 +46,11 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+        
         }
         else
         {
+
             Destroy(gameObject);
         }
 
@@ -60,7 +63,10 @@ public class GameManager : MonoBehaviour
      public void Update()
     {
         BackgroundMusic();
-        
+        if (!Source.isPlaying)
+        {
+            Source.Play();
+        }
 
     }
 
@@ -73,29 +79,28 @@ public class GameManager : MonoBehaviour
 
         if (currentScene == "MainMenu")
         {
+            Source.clip = menuMusic;
 
-            Source.clip = bgMusic1;
-            if (!Source.isPlaying)
-            {
-                Source.Play();
-            }
-
-         
-            //MusicManager.instance.SwitchMusic(bgMusic1);
+            //MusicManager.instance.SwitchMusic(menuMusic);
 
         }
-        else
+        else  if (currentScene == "GameScene")
         {
+           // Source.Stop();
+            Source.clip = level1Music;
+            //if (!Source.isPlaying)
+            //{
+            //    print("not playing");// + currentScene);
+            //    Source.Play();
+            //}
             //print(currentScene);
-
-            print("no teehee");// + currentScene);
+           
+            //Source.clip = menuMusic;
+            
 
         }
 
-        if (!Source.isPlaying)
-        {
-            Source.Play();
-        }
+       
     }
     public void GameOver()
     {
