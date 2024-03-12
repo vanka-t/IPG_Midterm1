@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     public AudioSource Source;
     public AudioClip menuMusic;
     public AudioClip level1Music;
+    public AudioClip level2Music;
 
     private string currentScene;
 
@@ -84,9 +85,9 @@ public class GameManager : MonoBehaviour
             //MusicManager.instance.SwitchMusic(menuMusic);
 
         }
-        else  if (currentScene == "GameScene")
+        else if (currentScene == "GameScene")
         {
-           // Source.Stop();
+            // Source.Stop();
             Source.clip = level1Music;
             //if (!Source.isPlaying)
             //{
@@ -94,14 +95,19 @@ public class GameManager : MonoBehaviour
             //    Source.Play();
             //}
             //print(currentScene);
-           
+
             //Source.clip = menuMusic;
-            
+
 
         }
+        else if (currentScene == "Level2a")
+        {
+            print("level 2");
+            Source.clip = level2Music;
+        }
 
-       
-    }
+
+        }
     public void GameOver()
     {
         //games over
@@ -134,13 +140,13 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         DontDestroyOnLoad(this);
-        DontDestroyOnLoad(playerObj);
-        DontDestroyOnLoad(healthBar);
+        //DontDestroyOnLoad(playerObj);
+        //DontDestroyOnLoad(healthBar);
         isLevelComplete = false;
         youWinPage.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // go to next scene/level
         
-        playerObj.transform.position = new Vector3(0, 0, 0);
+        //playerObj.transform.position = new Vector3(0, 0, 0);
       
 
 
