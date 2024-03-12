@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
     //AUDIO SETTINGS
     public AudioSource Source;
     public AudioClip ouchSound;
+
     public AudioClip collectSound;
     public AudioClip shootSound;
 
@@ -187,8 +188,8 @@ public class Player : MonoBehaviour
             Source.clip = collectSound;
             Source.Play();
             print("Token collected!");
-            levelNum += 1;
-            print(levelNum);
+            //levelNum += 1;
+            //print(levelNum);
 
 
             Cursor.lockState = CursorLockMode.None;

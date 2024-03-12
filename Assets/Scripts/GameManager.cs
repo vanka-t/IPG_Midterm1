@@ -119,6 +119,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
 
     public void LevelComplete()
     {
@@ -135,7 +140,7 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
         //DontDestroyOnLoad(playerObj);
         //DontDestroyOnLoad(healthBar);
         isLevelComplete = false;
