@@ -55,14 +55,14 @@ public class SpawnerManager : MonoBehaviour
             else if (currentLevel == 2)
             {
                 // For level 2, only spawn Enemy1
-                spawnRate_Enemy1 = 0.0009f;
+                spawnRate_Enemy1 = 0.09f;
                 spawnRate_Enemy2 = 0f;
                 spawnRate_Enemy3 = 0f;
             }
             else
             {
                 // For level 3, spawn both Enemy1 and Enemy2
-                spawnRate_Enemy1 = 0.03f;
+                spawnRate_Enemy1 = 0.003f;
                 spawnRate_Enemy2 = 0.005f;
                 spawnRate_Enemy3 = 0f;
             }
@@ -124,13 +124,13 @@ public class SpawnerManager : MonoBehaviour
 
     private Transform FindAvailableSpawnPoint()
     {
-        // Find available spawn points based on player proximity
+  
         List<Transform> availableSpawnPoints = new List<Transform>();
         foreach (Transform sP in spawnPoints)
         {
             Collider[] hitColliders = Physics.OverlapSphere(
                 sP.position,
-                30, // Change to desired radius
+                30, // Change ?
                 playerLayerMask
             );
 
@@ -150,7 +150,7 @@ public class SpawnerManager : MonoBehaviour
         return availableSpawnPoints[Random.Range(0, availableSpawnPoints.Count)];
     }
 
-    // Method to spawn bullets
+
     public void SpawnBullet(Vector3 pos, Quaternion rot)
     {
         Bullet bullet = Instantiate(prefab_Bullets, bulletGroup);
@@ -159,13 +159,13 @@ public class SpawnerManager : MonoBehaviour
         bulletList.Add(bullet);
     }
 
-    // Method to remove bullets
+ 
     public void RemoveBullet(Bullet bullet)
     {
         bulletList.Remove(bullet);
     }
 
-    // Method to spawn enemies
+
     public void SpawnEnemies(int id, Vector3 pos, Quaternion rot)
     {
         EnemySettings enemy = Instantiate(prefab_Enemies[id], enemyZones);
@@ -174,7 +174,7 @@ public class SpawnerManager : MonoBehaviour
         enemyList.Add(enemy);
     }
 
-    // Method to remove enemies
+    // remove enemies
     public void RemoveEnemy(EnemySettings enemy)
     {
         if (enemy as Enemy1)

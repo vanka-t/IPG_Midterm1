@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy1 : EnemySettings
 {
@@ -9,6 +10,21 @@ public class Enemy1 : EnemySettings
     protected override void TimerContent()
     {
         //recover health
+        if (!nav.isOnNavMesh)
+        {
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(transform.position, out hit, Mathf.Infinity, 1))
+            {
+                transform.position = hit.position;
+
+                print("Found navmesh");
+            }
+            else
+            {
+                print("Couldn't find nav mesh");
+                return;
+            }
+        };
         nav.SetDestination(target.position);
     }
     //protected override void Start()
