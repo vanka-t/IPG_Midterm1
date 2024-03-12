@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VanessaMusic.Utilities;
 
 public class Player : MonoBehaviour
 {
@@ -127,6 +128,9 @@ public class Player : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.X))
             {
+
+                //  MusicManager.instance.SwitchMusic(shootSound);
+
                 Source.clip = shootSound;
                 Source.Play();
                 SpawnerManager.instance.SpawnBullet(gunPoint.position, cameraTrans.rotation);

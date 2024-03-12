@@ -7,30 +7,58 @@ using VanessaMusic.Utilities;
 public class MenuManager : MonoBehaviour
 {
 
-    public AudioClip bgMusic1;
+    
 
     [SerializeField]
     AudioClip bgMusic;
+    public AudioClip bgMusic2;
     [SerializeField]
     AudioClip buttonSound;
+
+    public Scene scene11;
+    public string scene1, scene2;
+
+
+     string currentScene;
 
     // Start is called before the first frame update
     private void Start()
     {
-       MusicManager.instance.SwitchMusic(bgMusic);
-        
+         MusicManager.instance.SwitchMusic(bgMusic2);
+
+    }
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
     }
 
     private void Update()
     {
-        Scene sceneID = SceneManager.GetActiveScene();
+        BackgroundMusic();
+    }
 
-        if (sceneID.name == "GameScene")
+    void BackgroundMusic()
+    {
+        currentScene = SceneManager.GetActiveScene().name;
+
+        if (currentScene == "GameScene")
         {
-            print("teehee");
-            MusicManager.instance.SwitchMusic(bgMusic1);
+
+            MusicManager.instance.SwitchMusic(bgMusic);
+            //MusicManager.instance.SwitchMusic(bgMusic1);
 
         }
+        else 
+        {
+            //print(currentScene);
+            MusicManager.instance.SwitchMusic(bgMusic2);
+   
+
+        
+            print("oh" + currentScene);
+
+        }
+
     }
 
     public void StartGame()

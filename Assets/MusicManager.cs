@@ -37,15 +37,11 @@ namespace VanessaMusic.Utilities
 
         private void Update()
         {
+            //if (GameManager.instance.levelCount == 0)
+            //{
 
-            Scene sceneID = SceneManager.GetActiveScene();
-
-            if (sceneID.name == "GameScene")
-            {
-                print("teehee");
-                SwitchMusic(bgMusic1);
-
-            }
+            //}
+        
         }
 
         public void SwitchMusic(AudioClip aClip)

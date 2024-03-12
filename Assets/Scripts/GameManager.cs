@@ -7,9 +7,7 @@ using VanessaMusic.Utilities;
 
 public class GameManager : MonoBehaviour
 {
-
     
-
     public static GameManager instance;
     public Transform player;
 
@@ -30,9 +28,17 @@ public class GameManager : MonoBehaviour
     public GameObject healthBar;
 
 
-    AudioSource source;
 
+
+    
+    public int levelCount = 0;
+
+
+
+    public AudioSource Source;
     public AudioClip bgMusic1;
+
+    private string currentScene;
 
     void Awake()
     {
@@ -45,28 +51,52 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        source = GetComponent<AudioSource>();
+      Source = GetComponent<AudioSource>();
+       
 
 
     }
 
-     void Update()
+     public void Update()
     {
-        Scene sceneID = SceneManager.GetActiveScene();
+        BackgroundMusic();
+        
 
-        if (sceneID.name == "GameScene")
-        {
-            print("teehee");
-            source.clip = bgMusic1;
-            source.Play();
+    }
 
-        } else
+    //changing music depending on scene
+    public void BackgroundMusic()
+    {
+
+
+        currentScene = SceneManager.GetActiveScene().name;
+
+        if (currentScene == "MainMenu")
         {
-            print("no teehee");
+
+            Source.clip = bgMusic1;
+            if (!Source.isPlaying)
+            {
+                Source.Play();
+            }
+
+         
+            //MusicManager.instance.SwitchMusic(bgMusic1);
 
         }
-    }
+        else
+        {
+            //print(currentScene);
 
+            print("no teehee");// + currentScene);
+
+        }
+
+        if (!Source.isPlaying)
+        {
+            Source.Play();
+        }
+    }
     public void GameOver()
     {
         //games over
